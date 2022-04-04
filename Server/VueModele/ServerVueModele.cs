@@ -79,7 +79,8 @@ namespace Server.VueModele
         private void Listen(object param)
         {
             CommandeServeur.StartServerListening(ref ServerSocket, 2);
-            ClientSocket = CommandeServeur.GetClientSocket(ServerSocket);
+            string test = CommandeServeur.GetClientSocket(ServerSocket);
+            //ClientSocket = CommandeServeur.GetClientSocket(ServerSocket);
             PropMessageRecu = GetMessageClient(ClientSocket);
         }
         public ICommand PropSendMessage { get; set; }
@@ -174,8 +175,6 @@ namespace Server.VueModele
                 messageClient += Encoding.UTF8.GetString(bytes, 0, bytesRec);
                 if (messageClient.IndexOf("<EOF>") > -1)
                 {
-                    // Remove <EOF> in data
-                    messageClient = messageClient.Remove(messageClient.IndexOf("<EOF>"), 5);
                     splittedMessage = messageClient.Split(";");
                     DataBaseCommand.AddMessageUser(splittedMessage[0], splittedMessage[1]);
                     break;

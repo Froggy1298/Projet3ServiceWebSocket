@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A7NUTcWbTASbIxXka+dt6Mn6V4LS7rEgQIYDZZQI77sQjiE+ajyfRABm1/KgVrNvqw+4oZIYT+QGo8FehlOnPA==",
+  "dgSpecHash": "sFeWl15Dc8A6Qff1FzQoaVoG2c8rB3gxYEC4kIR+eAqvB3oTyuyhDbZpZZs0Nq8xdek4iL9vQS/M+Ytkes+uFQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\suiss\\Desktop\\Client\\Client.csproj",
+  "projectFilePath": "C:\\Users\\suiss\\Desktop\\ServiceWeb\\Client\\Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\suiss\\.nuget\\packages\\microsoft.extensions.configuration\\6.0.1\\microsoft.extensions.configuration.6.0.1.nupkg.sha512",
     "C:\\Users\\suiss\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",

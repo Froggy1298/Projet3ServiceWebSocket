@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aCB1dajEzSTgge30ZZ6zq+gtB6DkOOlZSPXb1l1cAuNcUSZ61TpUOn0YE6n5KjKJBnhP4Tit+r5S6v+/+Lrj3g==",
+  "dgSpecHash": "DffYyr9mtlRIXw9nAK7s0Qt7ZBsS6e30rkhgc7w6kqD8GKM8j82MpmBo6QRPFQtKB16DngJx+IY0O6skmu/JlQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\suiss\\Desktop\\Server\\Server\\Server\\Server.csproj",
+  "projectFilePath": "C:\\Users\\suiss\\Desktop\\ServiceWeb\\Server\\Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\suiss\\.nuget\\packages\\bodi\\1.5.0\\bodi.1.5.0.nupkg.sha512",
     "C:\\Users\\suiss\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",

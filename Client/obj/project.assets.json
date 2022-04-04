@@ -526,11 +526,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\suiss\\Desktop\\Client\\Client.csproj",
+      "projectUniqueName": "C:\\Users\\suiss\\Desktop\\ServiceWeb\\Client\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "C:\\Users\\suiss\\Desktop\\Client\\Client.csproj",
+      "projectPath": "C:\\Users\\suiss\\Desktop\\ServiceWeb\\Client\\Client.csproj",
       "packagesPath": "C:\\Users\\suiss\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\suiss\\Desktop\\Client\\obj\\",
+      "outputPath": "C:\\Users\\suiss\\Desktop\\ServiceWeb\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

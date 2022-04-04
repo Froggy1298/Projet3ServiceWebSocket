@@ -7,8 +7,11 @@ using static Server.Modele.JsonClass;
 
 namespace Server.Modele
 {
+
     class ServerCommand
     {
+        byte[] bytes = new Byte[1024];
+
         public ServerCommand() { }
         public Socket BindServerSocket(Settings ServerSettings)
         {
@@ -57,9 +60,26 @@ namespace Server.Modele
                 return clientSock;
             }
         }
-        public Socket GetClientSocket(Socket serverSock)
+        public string GetClientSocket(Socket serverSock)
         {
-            return serverSock.Accept();
+            
+            while(true)
+            {
+                Socket handler = serverSock.Accept();
+                string data = null;
+                // An incoming connection needs to be processed.  
+                while (true)
+                {
+                    int bytesRec = handler.Receive(bytes);
+                    data += Encoding.UTF8.GetString(bytes, 0, bytesRec);
+                    if (data.IndexOf("<EOF>") > -1)
+                    {
+                        // Remove <EOF> in data
+                        data = data.Remove(data.IndexOf("<EOF>"), 5);
+                        return data;
+                    }
+                }
+            }
         }
         public bool SendMessageToClient(string message, Socket client)
         {
