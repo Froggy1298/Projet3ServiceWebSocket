@@ -54,8 +54,8 @@ namespace Client.VueModele
         private void ConnectServer(object param)
         {
 
+            clientSocket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             clientSocket.Connect(clientAddress, ClientSettings.Port);
-           
             PropEstConnectee = "Is Connected !";
         }
         public ICommand PropSendMessage { get; set; }

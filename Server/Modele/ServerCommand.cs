@@ -66,7 +66,9 @@ namespace Server.Modele
             
             while(true)
             {
-                handler = serverSock.Accept();
+                if(handler == null)
+                    handler = serverSock.Accept();
+                
                 string data = null;
                 // An incoming connection needs to be processed.  
                 while (true)

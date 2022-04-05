@@ -37,6 +37,7 @@ namespace Server.VueModele
             PropCloseConnection = new CommandeRelais(CloseConnection);
             PropListen = new CommandeRelais(Listen);
             PropSendMessage = new CommandeRelais(SendMessage);
+            PropReceiveMessage = new CommandeRelais(ReceiveMessage);
 
 
             DataBaseCommand = new BdService(SqlSettings);
@@ -77,11 +78,20 @@ namespace Server.VueModele
         public ICommand PropListen { get; set; }
         private void Listen(object param)
         {
-            CommandeServeur.StartServerListening(ref ServerSocket, 2);
+            ServerSocket.Listen(2);
+            //CommandeServeur.StartServerListening(ref ServerSocket, 2);
+        }
+        public ICommand PropReceiveMessage { get; set; }
+        private void ReceiveMessage(object param)
+        {
             PropMessageRecu = CommandeServeur.GetClientMessage(ServerSocket);
             PropMessageEnvoye = FormatClientMessage(PropMessageRecu);
-
         }
+
+
+
+
+
         public ICommand PropSendMessage { get; set; }
         private void SendMessage(object param)
         {
