@@ -61,7 +61,12 @@ namespace Client.VueModele
         public ICommand PropSendMessage { get; set; }
         private void SendMessage (object param)
         {
-            fullmessage = PropClientChoisi + ";" + PropMessageEnvoye + "<EOF>";
+            //CLIENTCONNECTER ; CLIENTENVOI ; MESSAGE
+            if(PropClientChoisi == "Client1")
+                fullmessage = PropClientChoisi + ";" + "Client2" + ";" + PropMessageEnvoye + "<EOF>";
+            if (PropClientChoisi == "Client2")
+                fullmessage = PropClientChoisi + ";" + "Client1" + ";" + PropMessageEnvoye + "<EOF>";
+
             byte[] sendBuffer = Encoding.UTF8.GetBytes(fullmessage);
             clientSocket.Send(sendBuffer);
             bytes = new Byte[1024];

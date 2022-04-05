@@ -166,16 +166,17 @@ namespace Server.VueModele
         private string FormatClientMessage(string messageRecu)
         {
 
-            List<string> unknownWords = ChercherMotInconnu(messageRecu.Split(";")[1]);
+            List<string> unknownWords = ChercherMotInconnu(messageRecu.Split(";")[2]);
             AddWordInDictionnaire(unknownWords);
-            List<string> savedMessages = DataBaseCommand.SelectAllUserMessages(messageRecu.Split(";"));
+            List<string> savedMessages = DataBaseCommand.SelectAllUserMessages(messageRecu.Split(";")[0]);
+            DataBaseCommand.AddMessageUser(messageRecu.Split(";")[1], messageRecu.Split(";")[2]);
             StringBuilder formatMessage = new StringBuilder();
             formatMessage.Append("Voici le(les) message(s) enregistré(s) à votre nom dans la base de donné:").AppendLine();
             foreach (string mot in savedMessages)
             {
                 formatMessage.Append("-").AppendLine(mot); 
             }
-            formatMessage.AppendLine().AppendLine("Voici le message recu par le server:").Append("-").AppendLine(messageRecu.Split(";")[1]).AppendLine().AppendLine("Voici les mots inconnus qui ont été ajouter dans le dictionnaire:");
+            formatMessage.AppendLine().AppendLine("Voici le message recu par le server:").Append("-").AppendLine(messageRecu.Split(";")[2]).AppendLine().AppendLine("Voici les mots inconnus qui ont été ajouter dans le dictionnaire:");
             foreach (string mot in unknownWords)
             {
                 formatMessage.Append("-").AppendLine(mot);

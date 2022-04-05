@@ -51,7 +51,7 @@ namespace Server.Modele
             }
 
         }
-        public List<string> SelectAllUserMessages(string[] message)
+        public List<string> SelectAllUserMessages(string ConnectedUser)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace Server.Modele
 
                     List<string> messages = new List<string>();
 
-                    MySqlCommand stmt = new MySqlCommand($"SELECT * FROM db_dev_2031887.messagesclient WHERE nomClient = '{message[0]}';", _connectionMySql);
+                    MySqlCommand stmt = new MySqlCommand($"SELECT * FROM db_dev_2031887.messagesclient WHERE nomClient = '{ConnectedUser}';", _connectionMySql);
 
                     MySqlDataReader dataBdReader = stmt.ExecuteReader();
 
@@ -69,11 +69,11 @@ namespace Server.Modele
                         messages.Add((string)dataBdReader["messageClient"]);
                     }
                     dataBdReader.Close();
-                    return messages;
-                    //if (DeleteAllMessagesUser(message[0]))
-                    //    return messages;
-                    //else
-                    //    return null;
+                   
+                    if (DeleteAllMessagesUser(ConnectedUser))
+                        return messages;
+                    else
+                       return null;
                 }
                 else
                 return null;
@@ -88,7 +88,7 @@ namespace Server.Modele
         {
             try
             {
-                MySqlCommand stmt = new MySqlCommand($"DELETE FROM db_dev_2031887.messageclient WHERE nomClient = '{userName}';", _connectionMySql);
+                MySqlCommand stmt = new MySqlCommand($"DELETE FROM db_dev_2031887.messagesclient WHERE nomClient = '{userName}';", _connectionMySql);
 
                 stmt.ExecuteNonQuery();
 
@@ -108,7 +108,7 @@ namespace Server.Modele
             {
                 if (OpenMySqlConnection())
                 {
-                    MySqlCommand stmt = new MySqlCommand($"INSERT INTO serviceDonne VALUE ({userName},{message})", _connectionMySql);
+                    MySqlCommand stmt = new MySqlCommand($"INSERT INTO db_dev_2031887.messagesclient VALUE ('{userName}','{message}')", _connectionMySql);
                     stmt.ExecuteNonQuery();
                     CloseMySqlConnection();
                     return true;
