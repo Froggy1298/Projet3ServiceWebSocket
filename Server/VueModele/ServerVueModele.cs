@@ -18,7 +18,6 @@ namespace Server.VueModele
         private JsonClass.SqlConnection SqlSettings;
         private JsonClass.Settings ServerSettings;
         private Socket ServerSocket;
-        private Socket ClientSocket;
         private ServerCommand CommandeServeur;
         private BdService DataBaseCommand;
         private byte[] bytes;
@@ -79,22 +78,21 @@ namespace Server.VueModele
         private void Listen(object param)
         {
             CommandeServeur.StartServerListening(ref ServerSocket, 2);
-            string test = CommandeServeur.GetClientSocket(ServerSocket);
-            //ClientSocket = CommandeServeur.GetClientSocket(ServerSocket);
-            PropMessageRecu = GetMessageClient(ClientSocket);
+            PropMessageRecu = CommandeServeur.GetClientMessage(ServerSocket);
+            PropMessageEnvoye = FormatClientMessage(PropMessageRecu);
+
         }
         public ICommand PropSendMessage { get; set; }
         private void SendMessage(object param)
         {
-            PropMessageEnvoye = FormatClientMessage(PropMessageRecu);
-            byte[] messageToSend = Encoding.UTF8.GetBytes(PropMessageEnvoye);
-            ClientSocket.Send(messageToSend);
+            CommandeServeur.SendMessageToClient(PropMessageEnvoye);
+            /*byte[] sendBuffer = Encoding.UTF8.GetBytes(PropMessageEnvoye);
+            ServerSocket.Send(sendBuffer);*/
         }
         public ICommand PropCloseConnection { get; set; }
         private void CloseConnection(object param)
         {
             ServerSocket = CommandeServeur.CloseServerConnection(ServerSocket);
-            //ClientSocket = CommandeServeur.CloseClientConnection(ClientSocket);
             PropEstConnectee = "Not Connected Yet !";
         }
         #endregion
@@ -165,23 +163,6 @@ namespace Server.VueModele
         #endregion
 
         #region Fonctions
-        private string GetMessageClient(Socket ClientSocket)
-        {
-            string messageClient = null;
-            string[] splittedMessage = null;
-            while (true)
-            {
-                int bytesRec = ClientSocket.Receive(bytes);
-                messageClient += Encoding.UTF8.GetString(bytes, 0, bytesRec);
-                if (messageClient.IndexOf("<EOF>") > -1)
-                {
-                    splittedMessage = messageClient.Split(";");
-                    DataBaseCommand.AddMessageUser(splittedMessage[0], splittedMessage[1]);
-                    break;
-                }
-            }
-            return messageClient;
-        }
         private string FormatClientMessage(string messageRecu)
         {
 

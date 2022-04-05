@@ -29,13 +29,14 @@ namespace Client
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (NomClient.Text == "Client1")
+            //string test = ((ComboBox)sender).SelectedItem.ToString();
+            if (e.AddedItems[0].ToString() == "Client1")
             {
-                MainGrid.Background = new SolidColorBrush(Color.FromRgb(222,192,109));
+                MainGrid.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#de6d6d"));//Method in HEX
             }
-            if (NomClient.Text == "Client2")
+            if (e.AddedItems[0].ToString() == "Client2")
             {
-                MainGrid.Background = new SolidColorBrush(Color.FromRgb(222, 109, 109));
+                MainGrid.Background = new SolidColorBrush(Color.FromRgb(222, 192, 109));//Method in RGB
             }
         }
     }

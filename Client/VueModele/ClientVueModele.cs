@@ -16,8 +16,8 @@ namespace Client.VueModele
 {
     public class ClientVueModele : INotifyPropertyChanged
     {
-     
-     
+
+        byte[] bytes = new Byte[1024];
         private JsonClass.Settings ClientSettings;
         private IPAddress clientAddress;
         private Socket clientSocket;
@@ -64,6 +64,11 @@ namespace Client.VueModele
             fullmessage = PropClientChoisi + ";" + PropMessageEnvoye + "<EOF>";
             byte[] sendBuffer = Encoding.UTF8.GetBytes(fullmessage);
             clientSocket.Send(sendBuffer);
+            bytes = new Byte[1024];
+
+
+            int bytesMessage = clientSocket.Receive(bytes);
+            PropMessageRecu = Encoding.UTF8.GetString(bytes, 0, bytesMessage);
 
         }
         public ICommand PropReceiveMessage { get; set; }
@@ -71,7 +76,8 @@ namespace Client.VueModele
         {
             try
             {
-                clientSocket.Receive(_receiveBuffer);
+                clientSocket.Listen(1);
+                PropMessageRecu = GetServerMessage(clientSocket);
             }
             catch(SocketException ex)
             {
@@ -132,6 +138,30 @@ namespace Client.VueModele
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region fonction
+        public string GetServerMessage(Socket clientSocket)
+        {
+
+            while (true)
+            {
+                Socket handler = clientSocket.Accept();
+                string data = null;
+                // An incoming connection needs to be processed.  
+                while (true)
+                {
+                    int bytesRec = handler.Receive(bytes);
+                    data += Encoding.UTF8.GetString(bytes, 0, bytesRec);
+                    if (data.IndexOf("<EOF>") > -1)
+                    {
+                        // Remove <EOF> in data
+                        data = data.Remove(data.IndexOf("<EOF>"), 5);
+                        return data;
+                    }
+                }
+            }
+        }
         #endregion
 
     }

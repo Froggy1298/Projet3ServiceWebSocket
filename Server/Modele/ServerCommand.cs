@@ -11,6 +11,7 @@ namespace Server.Modele
     class ServerCommand
     {
         byte[] bytes = new Byte[1024];
+        Socket handler = null;
 
         public ServerCommand() { }
         public Socket BindServerSocket(Settings ServerSettings)
@@ -60,12 +61,12 @@ namespace Server.Modele
                 return clientSock;
             }
         }
-        public string GetClientSocket(Socket serverSock)
+        public string GetClientMessage(Socket serverSock)
         {
             
             while(true)
             {
-                Socket handler = serverSock.Accept();
+                handler = serverSock.Accept();
                 string data = null;
                 // An incoming connection needs to be processed.  
                 while (true)
@@ -81,18 +82,16 @@ namespace Server.Modele
                 }
             }
         }
-        public bool SendMessageToClient(string message, Socket client)
+        public void SendMessageToClient(string message)
         {
             try
             {
                 byte[] messageToSend = Encoding.UTF8.GetBytes(message);
-                client.Send(messageToSend);
-                return true;
+                handler.Send(messageToSend);
             }
             catch(SocketException ex)
             {
                 MessageBox.Show(ex.Message);
-                return false;
             }
         }
 

@@ -42,7 +42,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="ExtraBold" Text="{Binding PropEstConnectee,Mode=TwoWay}">Is Not Connected Yet !</TextBlock>
-                <ComboBox x:Name="NomClient" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="20" Width="200" ItemsSource="{Binding PropChoixClient}" SelectedItem="{Binding PropClientChoisi}" SelectionChanged="ComboBox_SelectionChanged"/>
+                <ComboBox Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="20" Width="200" ItemsSource="{Binding PropChoixClient}" SelectedItem="{Binding PropClientChoisi}" SelectionChanged="ComboBox_SelectionChanged"/>
             </Grid>
         </Grid>
         <Grid Grid.Row="1" Margin="30,0">
