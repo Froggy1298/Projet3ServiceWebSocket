@@ -59,7 +59,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" VerticalAlignment="Center" FontSize="15" FontWeight="ExtraBold">Message to send to client</Label>
-            <TextBox ScrollViewer.CanContentScroll="True" Grid.Row="1" BorderThickness="2" Text="{Binding PropMessageEnvoye,Mode=TwoWay}"></TextBox>
+            <TextBox ScrollViewer.CanContentScroll="True" IsReadOnly="True" Grid.Row="1" BorderThickness="2" Text="{Binding PropMessageEnvoye,Mode=TwoWay}"></TextBox>
         </Grid>
         <Button Grid.Row="3" Margin="30,10,0,5" HorizontalAlignment="Left"  Command="{Binding PropSendMessage}">Send Message</Button>
         <Button Grid.Row="4" Margin="30,5,0,10" HorizontalAlignment="Left"  Command="{Binding PropCloseConnection}">Close Connection</Button>
