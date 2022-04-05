@@ -95,6 +95,7 @@ namespace Client.VueModele
             try
             {
                 clientSocket.Shutdown(SocketShutdown.Both);
+                //clientSocket.Dispose(); //TODO
                 PropEstConnectee = "Is Not Connected Yet !";
             }
             finally

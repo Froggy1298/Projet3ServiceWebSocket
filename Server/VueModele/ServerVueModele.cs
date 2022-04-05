@@ -84,7 +84,7 @@ namespace Server.VueModele
         public ICommand PropReceiveMessage { get; set; }
         private void ReceiveMessage(object param)
         {
-            PropMessageRecu = CommandeServeur.GetClientMessage(ServerSocket);
+            PropMessageRecu = CommandeServeur.GetClientMessage(ref ServerSocket);
             PropMessageEnvoye = FormatClientMessage(PropMessageRecu);
         }
 

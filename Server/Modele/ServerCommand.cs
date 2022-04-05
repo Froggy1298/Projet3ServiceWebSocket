@@ -30,6 +30,7 @@ namespace Server.Modele
         }
         public void StartServerListening(ref Socket serverSock,int maxConnection)
         {
+            handler.Dispose();
             serverSock.Listen(maxConnection);
         }
         public Socket CloseServerConnection(Socket serverSock)
@@ -37,6 +38,8 @@ namespace Server.Modele
             try
             {
                 serverSock.Close();
+                serverSock.Shutdown(SocketShutdown.Both);
+
                 return serverSock;
                 //ServerSock = ServerCommand.CloseServerConnection(serverSock);
 
@@ -61,12 +64,12 @@ namespace Server.Modele
                 return clientSock;
             }
         }
-        public string GetClientMessage(Socket serverSock)
+        public string GetClientMessage(ref Socket serverSock)
         {
             
             while(true)
             {
-                if(handler == null)
+                if (handler == null)
                     handler = serverSock.Accept();
                 
                 string data = null;
@@ -90,6 +93,7 @@ namespace Server.Modele
             {
                 byte[] messageToSend = Encoding.UTF8.GetBytes(message);
                 handler.Send(messageToSend);
+                //handler.Close() //TODO
             }
             catch(SocketException ex)
             {
