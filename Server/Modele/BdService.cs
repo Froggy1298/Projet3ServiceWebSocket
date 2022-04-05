@@ -69,11 +69,11 @@ namespace Server.Modele
                         messages.Add((string)dataBdReader["messageClient"]);
                     }
                     dataBdReader.Close();
-                   
-                    if (DeleteAllMessagesUser(ConnectedUser))
+                    return messages;
+                    /*if (DeleteAllMessagesUser(ConnectedUser))
                         return messages;
                     else
-                       return null;
+                       return null;*/
                 }
                 else
                 return null;
