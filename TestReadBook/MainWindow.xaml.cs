@@ -24,7 +24,9 @@ namespace TestReadBook
     {
         public MainWindow()
         {
-            //MyPage.Navigate("https://www.youtube.com/");
+            InitializeComponent();
+
+            //MyPage.Navigate("https://www.gutenberg.org/");
             //MyPage.NavigateToString("https://www.pentagone.com/collections/vetements-homme");
 
             WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/67785/67785-h/67785-h.htm");
@@ -38,22 +40,28 @@ namespace TestReadBook
             //StreamReader reader = new StreamReader(dataStream);
             StreamReader reader = new StreamReader(response.GetResponseStream());
 
+            
 
-
-            string responseFromServer = reader.ReadToEnd();
-            /*List<string> lelivre = new List<string>();
-            while (!reader.EndOfStream)
-            {
-                lelivre.Add(reader.ReadLine());
-            }*/
+            //string responseFromServer = reader.ReadToEnd();
+            List<string> lelivre = new List<string>();
+            string test =  "";
+            
+                while (!reader.EndOfStream)
+                {
+                    var temp = reader.ReadLine().Replace("&mdash", "").Replace("!"," !").Replace("?", " ?");
+                    lelivre.Add(temp);
+                    test += temp;
+                }
+            
+           
 
             //faire un if
             //MessageBox.Show(response.StatusDescription);
 
 
           
-            MyPage.NavigateToString(responseFromServer);
-            InitializeComponent();
+            MyPage.NavigateToString(test);
+
         }
     }
 }
