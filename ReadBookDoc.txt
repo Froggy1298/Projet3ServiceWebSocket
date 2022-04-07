@@ -1,0 +1,5 @@
+https://stackoverflow.com/questions/12009913/how-to-load-a-web-page-using-wpf
+https://docs.microsoft.com/en-us/dotnet/api/system.net.webclient?view=net-6.0
+https://docs.microsoft.com/en-us/dotnet/api/system.net.webrequest?view=net-6.0
+https://stackoverflow.com/questions/4510212/how-i-can-get-web-pages-content-and-save-it-into-the-string-variable
+https://wpf-tutorial.com/misc-controls/the-webbrowser-control/

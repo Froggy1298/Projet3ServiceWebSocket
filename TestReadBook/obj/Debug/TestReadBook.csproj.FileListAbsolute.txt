@@ -1,0 +1,15 @@
+C:\Users\suiss\Source\Repos\TestReadBook\bin\Debug\TestReadBook.exe.config
+C:\Users\suiss\Source\Repos\TestReadBook\bin\Debug\TestReadBook.exe
+C:\Users\suiss\Source\Repos\TestReadBook\bin\Debug\TestReadBook.pdb
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\TestReadBook.csproj.AssemblyReference.cache
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\MainWindow.g.cs
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\App.g.cs
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\TestReadBook_MarkupCompile.cache
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\TestReadBook_MarkupCompile.lref
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\MainWindow.baml
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\TestReadBook.g.resources
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\TestReadBook.Properties.Resources.resources
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\TestReadBook.csproj.GenerateResource.cache
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\TestReadBook.csproj.CoreCompileInputs.cache
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\TestReadBook.exe
+C:\Users\suiss\Source\Repos\TestReadBook\obj\Debug\TestReadBook.pdb
