@@ -48,19 +48,29 @@ namespace TestReadBook
             
                 while (!reader.EndOfStream)
                 {
-                    var temp = reader.ReadLine().Replace("&mdash", "").Replace("!"," !").Replace("?", " ?");
+                    var temp = reader.ReadLine().Replace("&mdash", "")
+                    .Replace("!"," !")
+                    .Replace("?", " ?")
+                    .Replace(":"," :")
+                    .Replace("»", " »") 
+                    .Replace("«", " «");
                     lelivre.Add(temp);
                     test += temp;
                 }
-            
-           
+            int indexChap = lelivre.IndexOf("<hr class=\"chap\" />");
+            int indexHead = lelivre.IndexOf("</head>");
+            for (int i = 0; i < indexChap;i++)
+            {
+                lelivre.RemoveAt(0);
+            }
 
             //faire un if
             //MessageBox.Show(response.StatusDescription);
+            string combinedString = string.Join("", lelivre);
 
 
-          
-            MyPage.NavigateToString(test);
+
+            MyPage.NavigateToString(combinedString);
 
         }
     }
