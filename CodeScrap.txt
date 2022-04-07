@@ -1,0 +1,13 @@
+List<string> listeLivre = new();
+            WebRequest requetteLivre = HttpWebRequest.Create(@"https://www.gutenberg.org/files/63267/63267-h/63267-h.htm");
+            WebResponse ReponseLivre =  requetteLivre.GetResponse();
+            StreamReader livre = new(ReponseLivre.GetResponseStream());
+            string livreString = "";
+            while(!livre.EndOfStream)
+            {
+                listeLivre.Add(livre.ReadLine());
+            }
+            listeLivre.RemoveAll((mot) => mot == string.Empty || mot.ElementAt(0) != '<');
+            listeLivre.ForEach((ligne) => livreString += ligne);
+            
+            return livreString;
