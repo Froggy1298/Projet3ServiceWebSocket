@@ -29,7 +29,11 @@ namespace TestReadBook
             //MyPage.Navigate("https://www.gutenberg.org/");
             //MyPage.NavigateToString("https://www.pentagone.com/collections/vetements-homme");
 
-            WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/67785/67785-h/67785-h.htm");
+            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/67785/67785-h/67785-h.htm");
+            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/1342/1342-h/1342-h.htm");
+            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/cache/epub/27566/pg27566.html");
+            WebRequest request = WebRequest.Create("https://www.gutenberg.org/cache/epub/18197/pg18197.html");
+
 
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -44,25 +48,50 @@ namespace TestReadBook
 
             //string responseFromServer = reader.ReadToEnd();
             List<string> lelivre = new List<string>();
-            string test =  "";
             
-                while (!reader.EndOfStream)
-                {
-                    var temp = reader.ReadLine().Replace("&mdash", "")
-                    .Replace("!"," !")
-                    .Replace("?", " ?")
-                    .Replace(":"," :")
-                    .Replace("»", " »") 
-                    .Replace("«", " «");
-                    lelivre.Add(temp);
-                    test += temp;
-                }
-            int indexChap = lelivre.IndexOf("<hr class=\"chap\" />");
-            int indexHead = lelivre.IndexOf("</head>");
-            for (int i = 0; i < indexChap;i++)
+            while (!reader.EndOfStream)
             {
-                lelivre.RemoveAt(0);
+                    
+                lelivre
+                .Add(reader.ReadLine()
+                .Replace("—", "")
+                .Replace("&#151;", "")
+                .Replace("&mdash;", "")
+                .Replace("--", "")
+                .Replace("!", " !")
+                .Replace("?", " ?")
+                .Replace(":", " :")
+                .Replace("»", " »")
+                .Replace("«", "« "));
             }
+            int debutBody = lelivre.IndexOf("<body>");
+            int startOfBook = 0;
+            for (int i = 0; i < lelivre.Count; i++)
+            {
+                if (lelivre[i].Contains("*** START OF"))
+                {
+                    startOfBook = i;
+                    break;
+                }
+            }
+
+            
+            for (int i = debutBody; i < startOfBook; i++)
+            {
+                lelivre.RemoveAt(debutBody+1);
+            }
+            
+            for (int i = 0; i < lelivre.Count; i++)
+            {
+               if(lelivre[i].Contains("<img"))
+               {
+                    lelivre.RemoveAt(i);
+               }
+            }
+            lelivre.RemoveAt(0);
+            lelivre.RemoveAt(0);
+
+
 
             //faire un if
             //MessageBox.Show(response.StatusDescription);
