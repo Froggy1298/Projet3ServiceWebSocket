@@ -38,6 +38,9 @@ namespace Server.VueModele
             PropListen = new CommandeRelais(Listen);
             PropSendMessage = new CommandeRelais(SendMessage);
             PropReceiveMessage = new CommandeRelais(ReceiveMessage);
+            PropAddDictionnaire = new CommandeRelais(AddDictionnaire);
+            PropSupprimerDictionnaire = new CommandeRelais(SupprimerDictionnaire);
+            PropRechercher = new CommandeRelais(Rechercher);
 
 
             DataBaseCommand = new BdService(SqlSettings);
@@ -113,6 +116,101 @@ namespace Server.VueModele
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+
+        #region Bouton et binding de la partie Dictionnaire
+        private string motAjouter;
+        public string PropMotAjouter
+        {
+            get { return motAjouter; }
+            set { motAjouter = value; NotifyPropertyChanged(); }
+        }
+
+        private string motSupprimer;
+        public string PropMotSupprimer
+        {
+            get { return motSupprimer; }
+            set { motSupprimer = value; NotifyPropertyChanged(); }
+        }
+
+        private string motRechercher;
+        public string PropMotRechercher
+        {
+            get { return motRechercher; }
+            set { motRechercher = value; NotifyPropertyChanged(); }
+        }
+        private List<string> motTrouver;
+
+        public List<string> PropMotTrouve
+        {
+            get { return motTrouver; }
+            set { motTrouver = value; NotifyPropertyChanged(); }
+        }
+
+
+        public ICommand PropAddDictionnaire { get; set; }
+        private void AddDictionnaire(object param)
+        {
+            if(!dictionnaire.Contains(PropMotAjouter))
+            {
+                using (StreamWriter streamWriter = File.AppendText("dictionnaire.dic"))
+                {
+                    dictionnaire.Add(PropMotAjouter);
+                    streamWriter.WriteLine(PropMotAjouter);
+                    PropMotAjouter = "";
+                    MessageBox.Show("Mot Ajouter Avec Succes");
+                }
+            }
+            else
+            {
+                PropMotAjouter = "";
+                MessageBox.Show("Le mot que vous voulez ajouter se trouve déja dans le dictionnaire");
+            }
+        }
+        public ICommand PropSupprimerDictionnaire { get; set; }
+        private void SupprimerDictionnaire(object param)
+        {
+            if (dictionnaire.Contains(PropMotSupprimer))
+            {
+                dictionnaire.Remove(PropMotSupprimer);
+                File.WriteAllLines("dictionnaire.dic", dictionnaire);
+                PropMotSupprimer = "";
+                MessageBox.Show("Mot supprimer avec succès");
+            }
+            else
+            {
+                PropMotSupprimer = "";
+                MessageBox.Show("Le mot que vous voulez supprimer ne se trouve pas dans le dictionnaire");
+            }
+        }
+        public ICommand PropRechercher { get; set; }
+        private void Rechercher(object param)
+        {
+            PropMotTrouve = new List<string>();
+            if (PropMotRechercher.Contains("*"))
+            {
+                string rechercheTemp = PropMotRechercher.Remove(0, 1);
+                foreach (string mot in dictionnaire)
+                {   
+                    if(mot.Contains(rechercheTemp))
+                    {
+                        PropMotTrouve.Add(mot);
+                    }
+                }
+            }
+            else
+            {
+                foreach (string mot in dictionnaire)
+                {
+                    if (mot == PropMotRechercher)
+                    {
+                        PropMotTrouve.Add(mot);
+                    }
+                }
+            }
+
+        }
         #endregion
 
         #region Commande de Dictionnaire

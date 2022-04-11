@@ -10,7 +10,6 @@
         <Style TargetType="Button">
             <Setter Property="Background" Value="#1FB25F"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
-            <Setter Property="Width" Value="175"></Setter>
             <Setter Property="FontWeight" Value="ExtraBlack"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
         </Style>
@@ -18,55 +17,123 @@
             <Setter Property="Background" Value="#AFF0F0"></Setter>
             <Setter Property="BorderBrush" Value="Black"></Setter>
         </Style>
+        <Style TargetType="Label">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="FontWeight" Value="ExtraBold"></Setter>
+        </Style>
     </Window.Resources>
-    <Grid Background="#C9F5D9">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150" ></RowDefinition>
-            <RowDefinition Height="*" ></RowDefinition>
-            <RowDefinition Height="*" ></RowDefinition>
-            <RowDefinition Height="50" ></RowDefinition>
-            <RowDefinition Height="50" ></RowDefinition>
-        </Grid.RowDefinitions>
-        
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Button Grid.Row="0" Margin="30,20,20,10" Command="{Binding PropOpenConnection}">Start Sever</Button>
-                <Button Grid.Row="1" Margin="30,10,20,20" Command="{Binding PropListen}">Start Listening</Button>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="ExtraBold" Text="{Binding PropEstConnectee,Mode=TwoWay}">Is Not Connected Yet !</TextBlock>
-                <Button Grid.Row="1" Margin="30,10,20,20" Command="{Binding PropReceiveMessage}">Receive Message</Button>
-            </Grid>
+    <Grid>
+        <Grid>
+            <TabControl>
+                <TabItem Header="Connection Avec Client">
+                    <Grid Background="#C9F5D9">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150" ></RowDefinition>
+                            <RowDefinition Height="*" ></RowDefinition>
+                            <RowDefinition Height="*" ></RowDefinition>
+                            <RowDefinition Height="50" ></RowDefinition>
+                            <RowDefinition Height="50" ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Button Grid.Row="0" Margin="30,20,20,10" Command="{Binding PropOpenConnection}">Start Sever</Button>
+                                <Button Grid.Row="1" Margin="30,10,20,20" Command="{Binding PropListen}">Start Listening</Button>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="ExtraBold" Text="{Binding PropEstConnectee,Mode=TwoWay}">Is Not Connected Yet !</TextBlock>
+                                <Button Grid.Row="1" Margin="30,10,20,20" Command="{Binding PropReceiveMessage}">Receive Message</Button>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="30,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0">Message to receive from the client</Label>
+                            <TextBox Grid.Row="1" BorderThickness="2" IsEnabled="False" Text="{Binding PropMessageRecu,Mode=TwoWay}"></TextBox>
+                        </Grid>
+                        <Grid Grid.Row="2" Margin="30,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0">Message to send to client</Label>
+                            <TextBox ScrollViewer.CanContentScroll="True" IsReadOnly="True" Grid.Row="1" BorderThickness="2" Text="{Binding PropMessageEnvoye,Mode=TwoWay}"></TextBox>
+                        </Grid>
+                        <Button Grid.Row="3" Margin="30,10,0,5" HorizontalAlignment="Left"  Command="{Binding PropSendMessage}">Send Message</Button>
+                        <Button Grid.Row="4" Margin="30,5,0,10" HorizontalAlignment="Left"  Command="{Binding PropCloseConnection}">Close Connection</Button>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Dictionnaire">
+                    <Grid Background="#C9F5D9">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="0,10,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Margin="5" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button Command="{Binding PropAddDictionnaire}">Ajouter au dictionaire</Button>
+                            </StackPanel>
+                            <StackPanel Margin="5" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Label>Mot à ajouter:</Label>
+                                <TextBox Width="100" Text="{Binding PropMotAjouter,Mode=TwoWay}"></TextBox>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="0,10,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Margin="5" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button Command="{Binding PropSupprimerDictionnaire}">Supprimer du dictionaire</Button>
+                            </StackPanel>
+                            <StackPanel Margin="5" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Label>Mot à supprimer:</Label>
+                                <TextBox Width="100" Text="{Binding PropMotSupprimer,Mode=TwoWay}"></TextBox>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="2" Margin="0,10,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Margin="5" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button Command="{Binding PropRechercher}">Rechercher</Button>
+                            </StackPanel>
+                            <StackPanel Margin="5" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Label>Mot à rechercher:</Label>
+                                <TextBox Width="100" Text="{Binding PropMotRechercher,Mode=TwoWay}"></TextBox>
+                            </StackPanel>
+                            <ScrollViewer Grid.Row="2" Margin="5">
+                                <DataGrid  ItemsSource="{Binding PropMotTrouve}" IsSynchronizedWithCurrentItem="True" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding}" Header="Mot trouvé"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+            </TabControl>
         </Grid>
-        <Grid Grid.Row="1" Margin="30,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" VerticalAlignment="Center" FontSize="15" FontWeight="ExtraBold">Message to receive from the client</Label>
-            <TextBox Grid.Row="1" BorderThickness="2" IsEnabled="False" Text="{Binding PropMessageRecu,Mode=TwoWay}"></TextBox>
-        </Grid>
-        <Grid Grid.Row="2" Margin="30,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" VerticalAlignment="Center" FontSize="15" FontWeight="ExtraBold">Message to send to client</Label>
-            <TextBox ScrollViewer.CanContentScroll="True" IsReadOnly="True" Grid.Row="1" BorderThickness="2" Text="{Binding PropMessageEnvoye,Mode=TwoWay}"></TextBox>
-        </Grid>
-        <Button Grid.Row="3" Margin="30,10,0,5" HorizontalAlignment="Left"  Command="{Binding PropSendMessage}">Send Message</Button>
-        <Button Grid.Row="4" Margin="30,5,0,10" HorizontalAlignment="Left"  Command="{Binding PropCloseConnection}">Close Connection</Button>
     </Grid>
 </Window>
