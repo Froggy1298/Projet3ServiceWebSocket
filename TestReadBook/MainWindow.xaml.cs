@@ -29,10 +29,10 @@ namespace TestReadBook
             //MyPage.Navigate("https://www.gutenberg.org/");
             //MyPage.NavigateToString("https://www.pentagone.com/collections/vetements-homme");
 
-            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/67785/67785-h/67785-h.htm");
+            WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/67785/67785-h/67785-h.htm");
             //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/1342/1342-h/1342-h.htm");
             //WebRequest request = WebRequest.Create("https://www.gutenberg.org/cache/epub/27566/pg27566.html");
-            WebRequest request = WebRequest.Create("https://www.gutenberg.org/cache/epub/18197/pg18197.html");
+            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/cache/epub/18197/pg18197.html");
 
 
 
