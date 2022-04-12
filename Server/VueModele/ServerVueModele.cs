@@ -187,13 +187,14 @@ namespace Server.VueModele
         public ICommand PropRechercher { get; set; }
         private void Rechercher(object param)
         {
+            
             PropMotTrouve = new List<string>();
             if (PropMotRechercher.Contains("*"))
             {
-                
+                string tempRecherche = PropMotRechercher.Remove(0, 1);
                 foreach (string mot in dictionnaire)
                 {   
-                    if(mot.Contains(PropMotRechercher.Remove(0, 1)))
+                    if(mot.Contains(tempRecherche))
                     {
                         PropMotTrouve.Add(mot);
                     }
