@@ -43,3 +43,7 @@ C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\obj\Debug\TestReadBook.csproj.Gen
 C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\obj\Debug\TestReadBook.csproj.CoreCompileInputs.cache
 C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\obj\Debug\TestReadBook.exe
 C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\obj\Debug\TestReadBook.pdb
+C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\bin\Debug\itextsharp.dll
+C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\bin\Debug\itextsharp.xml
+C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\obj\Debug\TestReadBook.csproj.CopyComplete

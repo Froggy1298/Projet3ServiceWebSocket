@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Server"
         mc:Ignorable="d"
-       Title="MainWindow" Height="800" Width="500" ResizeMode="NoResize">
+       Title="MainWindow" Height="900" Width="600" ResizeMode="NoResize">
    <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#1FB25F"></Setter>

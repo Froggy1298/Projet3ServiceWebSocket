@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="500" ResizeMode="NoResize">
+        Title="MainWindow" Height="900" Width="600" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#eaedca"></Setter>
@@ -18,57 +18,80 @@
             <Setter Property="BorderBrush" Value="Black"></Setter>
         </Style>
     </Window.Resources>
-    <Grid x:Name="MainGrid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150" ></RowDefinition>
-            <RowDefinition Height="*" ></RowDefinition>
-            <RowDefinition Height="*" ></RowDefinition>
-            <RowDefinition Height="50" ></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Button Grid.Row="0" Margin="30,50"  Command="{Binding PropConnectServer}">Connect to server</Button>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="ExtraBold" Text="{Binding PropEstConnectee,Mode=TwoWay}">Is Not Connected Yet !</TextBlock>
-                <ComboBox Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="20" Width="200" ItemsSource="{Binding PropChoixClient}" SelectedItem="{Binding PropClientChoisi}" SelectionChanged="ComboBox_SelectionChanged"/>
-            </Grid>
-        </Grid>
-        <Grid Grid.Row="1" Margin="30,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="150"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" VerticalAlignment="Center" FontSize="15" FontWeight="ExtraBold">Message to send to server</Label>
-            <TextBox Grid.Row="1" BorderThickness="2" IsEnabled="True" Text="{Binding PropMessageEnvoye,Mode=TwoWay}"></TextBox>
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Margin="0,25" HorizontalAlignment="Left" Command="{Binding PropSendMessage}">Send Message</Button>
-            </Grid>
-        </Grid>
-        <Grid Grid.Row="2" Margin="30,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" VerticalAlignment="Center" FontSize="15" FontWeight="ExtraBold">Message to receive from server</Label>
-            <TextBox ScrollViewer.CanContentScroll="True" IsReadOnly="True" Grid.Row="1" BorderThickness="2" Text="{Binding PropMessageRecu,Mode=TwoWay}"></TextBox>
-        </Grid>
-        <Button Grid.Row="3" Margin="30,10,0,5" HorizontalAlignment="Left"  Command="{Binding PropDisconnect}">Disconnect</Button>
+    <Grid>
+        <TabControl>
+            <TabItem Header="Connection Avec Serveur">
+                <Grid x:Name="MainGrid" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150" ></RowDefinition>
+                        <RowDefinition Height="*" ></RowDefinition>
+                        <RowDefinition Height="*" ></RowDefinition>
+                        <RowDefinition Height="50" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" Margin="30,50"  Command="{Binding PropConnectServer}">Connect to server</Button>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="ExtraBold" Text="{Binding PropEstConnectee,Mode=TwoWay}">Is Not Connected Yet !</TextBlock>
+                            <ComboBox Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="20" Width="200" ItemsSource="{Binding PropChoixClient}" SelectedItem="{Binding PropClientChoisi}" SelectionChanged="ComboBox_SelectionChanged"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="30,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="150"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" VerticalAlignment="Center" FontSize="15" FontWeight="ExtraBold">Message to send to server</Label>
+                        <TextBox Grid.Row="1" BorderThickness="2" IsEnabled="True" Text="{Binding PropMessageEnvoye,Mode=TwoWay}"></TextBox>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Margin="0,25" HorizontalAlignment="Left" Command="{Binding PropSendMessage}">Send Message</Button>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="30,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" VerticalAlignment="Center" FontSize="15" FontWeight="ExtraBold">Message to receive from server</Label>
+                        <TextBox ScrollViewer.CanContentScroll="True" IsReadOnly="True" Grid.Row="1" BorderThickness="2" Text="{Binding PropMessageRecu,Mode=TwoWay}"></TextBox>
+                    </Grid>
+                    <Button Grid.Row="3" Margin="30,10,0,5" HorizontalAlignment="Left"  Command="{Binding PropDisconnect}">Disconnect</Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Book">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ComboBox Grid.Row="0" Margin="5" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="20" Width="200" ItemsSource="{Binding PropChoixLivre}" SelectedItem="{Binding PropLivreChoisi}" SelectionChanged="ComboBox_SelectionChanged_1"/>
+                    <Grid  Grid.Row="1">
+                        <WebBrowser x:Name="MonLivre">
+
+                        </WebBrowser>
+                    </Grid>
+
+                </Grid>
+
+            </TabItem>
+
+        </TabControl>
     </Grid>
 </Window>

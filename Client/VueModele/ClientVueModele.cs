@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Net;
 using Server.VueModele;
+using System.Collections.ObjectModel;
 
 namespace Client.VueModele
 {
@@ -40,13 +41,36 @@ namespace Client.VueModele
             PropReceiveMessage = new CommandeRelais(ReceiveMessage);
             PropDisconnect = new CommandeRelais(Disconnect);
 
-
+            
             if (ChoixClient is null) ChoixClient = new();
             for (int i = 1; i < 3; i++)
             {
                 PropChoixClient.Add("Client"+i);
             }
+
+            if (PropChoixLivre is null) PropChoixLivre = new();
+            PropChoixLivre.Add(new("18873-CONTES ET LÉGENDES")); //https://www.gutenberg.org/files/18873/18873-h/18873-h.htm
+            PropChoixLivre.Add(new("22266-PARIS NOUVEAU")); //https://www.gutenberg.org/files/22266/22266-h/22266-h.htm
+            PropChoixLivre.Add(new("22813-LA MÈRE DE LA MARQUISE")); //https://www.gutenberg.org/files/22813/22813-h/22813-h.htm
+            PropChoixLivre.Add(new("54419-LE SIRE DE CHAMBLEY")); //https://www.gutenberg.org/files/54419/54419-h/54419-h.htm
+            foreach (Livre book in PropChoixLivre)
+            {
+                book.DownloadLivre();
+            }
         }
+        private ObservableCollection<Livre> ChoixLivre;
+        public ObservableCollection<Livre> PropChoixLivre
+        {
+            get { return ChoixLivre; }
+            set { ChoixLivre = value; NotifyPropertyChanged(); }
+        }
+        private Livre LivreChoisi;
+        public Livre PropLivreChoisi
+        {
+            get { return LivreChoisi; }
+            set { LivreChoisi = value; NotifyPropertyChanged(); }
+        }
+
 
 
         #region Prop Biding de boutton

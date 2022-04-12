@@ -190,10 +190,10 @@ namespace Server.VueModele
             PropMotTrouve = new List<string>();
             if (PropMotRechercher.Contains("*"))
             {
-                string rechercheTemp = PropMotRechercher.Remove(0, 1);
+                
                 foreach (string mot in dictionnaire)
                 {   
-                    if(mot.Contains(rechercheTemp))
+                    if(mot.Contains(PropMotRechercher.Remove(0, 1)))
                     {
                         PropMotTrouve.Add(mot);
                     }

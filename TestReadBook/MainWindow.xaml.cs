@@ -26,28 +26,29 @@ namespace TestReadBook
         {
             InitializeComponent();
 
-            //MyPage.Navigate("https://www.gutenberg.org/");
+            //MyPage.Navigate("https://www.youtube.com/");
             //MyPage.NavigateToString("https://www.pentagone.com/collections/vetements-homme");
 
-            WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/67785/67785-h/67785-h.htm");
-            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/1342/1342-h/1342-h.htm");
-            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/cache/epub/27566/pg27566.html");
-            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/cache/epub/18197/pg18197.html");
+            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/18873/18873-h/18873-h.htm");
+            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/22266/22266-h/22266-h.htm");
+            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/22813/22813-h/22813-h.htm");
+            //WebRequest request = WebRequest.Create("file:///C:/Users/suiss/Desktop/ServiceWeb/Server/MereDeLaMarquise.html");
 
 
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             //WebResponse response = request.GetResponse();
 
 
             //Stream dataStream = response.GetResponseStream();
             //StreamReader reader = new StreamReader(dataStream);
-            StreamReader reader = new StreamReader(response.GetResponseStream());
+            //StreamReader reader = new StreamReader(response.GetResponseStream());
 
             
-
+            MyPage.Source = new Uri(@"file:///C:/Users/suiss/Desktop/ServiceWeb/Server/MereDeLaMarquise.html");
             //string responseFromServer = reader.ReadToEnd();
-            List<string> lelivre = new List<string>();
+            /*List<string> lelivre = new List<string>();
             
             while (!reader.EndOfStream)
             {
@@ -62,11 +63,13 @@ namespace TestReadBook
                 .Replace("?", " ?")
                 .Replace(":", " :")
                 .Replace("»", " »")
+                .Replace("  ", " ")
                 .Replace("«", "« "));
             }
             int debutBody = lelivre.IndexOf("<body>");
-            int startOfBook = 0;
-            for (int i = 0; i < lelivre.Count; i++)
+      
+            int startOfBook = lelivre.FindIndex((line) => line.Contains("*** START OF"));
+            /*for (int i = 0; i < lelivre.Count; i++)
             {
                 if (lelivre[i].Contains("*** START OF"))
                 {
@@ -74,6 +77,7 @@ namespace TestReadBook
                     break;
                 }
             }
+            
 
             
             for (int i = debutBody; i < startOfBook; i++)
@@ -90,6 +94,10 @@ namespace TestReadBook
             }
             lelivre.RemoveAt(0);
             lelivre.RemoveAt(0);
+           
+     
+            
+
 
 
 
@@ -97,9 +105,9 @@ namespace TestReadBook
             //MessageBox.Show(response.StatusDescription);
             string combinedString = string.Join("", lelivre);
 
+          
 
-
-            MyPage.NavigateToString(combinedString);
+            MyPage.NavigateToString(combinedString);*/
 
         }
     }
