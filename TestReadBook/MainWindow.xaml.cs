@@ -31,24 +31,23 @@ namespace TestReadBook
 
             //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/18873/18873-h/18873-h.htm");
             //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/22266/22266-h/22266-h.htm");
-            //WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/22813/22813-h/22813-h.htm");
-            //WebRequest request = WebRequest.Create("file:///C:/Users/suiss/Desktop/ServiceWeb/Server/MereDeLaMarquise.html");
+            WebRequest request = WebRequest.Create("https://www.gutenberg.org/files/54419/54419-h/54419-h.htm");
 
 
 
 
-            //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+           HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             //WebResponse response = request.GetResponse();
 
 
-            //Stream dataStream = response.GetResponseStream();
+            Stream dataStream = response.GetResponseStream();
             //StreamReader reader = new StreamReader(dataStream);
-            //StreamReader reader = new StreamReader(response.GetResponseStream());
+            StreamReader reader = new StreamReader(response.GetResponseStream());
 
             
-            MyPage.Source = new Uri(@"file:///C:/Users/suiss/Desktop/ServiceWeb/Server/MereDeLaMarquise.html");
+            //MyPage.Source = new Uri(@"file:///C:/Users/suiss/Desktop/ServiceWeb/Server/MereDeLaMarquise.html");
             //string responseFromServer = reader.ReadToEnd();
-            /*List<string> lelivre = new List<string>();
+            List<string> lelivre = new List<string>();
             
             while (!reader.EndOfStream)
             {
@@ -69,7 +68,7 @@ namespace TestReadBook
             int debutBody = lelivre.IndexOf("<body>");
       
             int startOfBook = lelivre.FindIndex((line) => line.Contains("*** START OF"));
-            /*for (int i = 0; i < lelivre.Count; i++)
+            for (int i = 0; i < lelivre.Count; i++)
             {
                 if (lelivre[i].Contains("*** START OF"))
                 {
@@ -107,7 +106,7 @@ namespace TestReadBook
 
           
 
-            MyPage.NavigateToString(combinedString);*/
+            MyPage.NavigateToString(combinedString);
 
         }
     }

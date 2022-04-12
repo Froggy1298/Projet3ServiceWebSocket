@@ -37,8 +37,11 @@ namespace Server.Modele
         {
             try
             {
+                handler.Shutdown(SocketShutdown.Both);
+                handler.Close();
+                handler = null;
                 serverSock.Close();
-                serverSock.Shutdown(SocketShutdown.Both);
+                serverSock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 return serverSock;
                 //ServerSock = ServerCommand.CloseServerConnection(serverSock);
@@ -93,7 +96,6 @@ namespace Server.Modele
             {
                 byte[] messageToSend = Encoding.UTF8.GetBytes(message);
                 handler.Send(messageToSend);
-                //handler.Close() //TODO
             }
             catch(SocketException ex)
             {

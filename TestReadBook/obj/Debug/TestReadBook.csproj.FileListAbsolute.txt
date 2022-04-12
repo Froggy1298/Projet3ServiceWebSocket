@@ -47,3 +47,7 @@ C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\bin\Debug\itextsharp.dll
 C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\bin\Debug\itextsharp.xml
 C:\Users\suiss\Desktop\ServiceWeb\TestReadBook\obj\Debug\TestReadBook.csproj.CopyComplete
+C:\Users\2031887\Desktop\ServiceWeb\TestReadBook\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\2031887\Desktop\ServiceWeb\TestReadBook\bin\Debug\itextsharp.dll
+C:\Users\2031887\Desktop\ServiceWeb\TestReadBook\bin\Debug\itextsharp.xml
+C:\Users\2031887\Desktop\ServiceWeb\TestReadBook\obj\Debug\TestReadBook.csproj.CopyComplete
