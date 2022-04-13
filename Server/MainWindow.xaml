@@ -123,10 +123,10 @@
                                 <Label>Mot à rechercher:</Label>
                                 <TextBox Width="100" Text="{Binding PropMotRechercher,Mode=TwoWay}"></TextBox>
                             </StackPanel>
-                            <DataGrid Grid.Row="2" ItemsSource="{Binding PropMotTrouve, Mode=OneWay}" IsSynchronizedWithCurrentItem="True" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Binding="{Binding}" Header="Mot trouvé"/>
-                                    </DataGrid.Columns>
+                            <DataGrid Grid.Row="2" Margin="10" ItemsSource="{Binding PropMotTrouve, Mode=OneWay}" IsSynchronizedWithCurrentItem="True" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding}" Header="Mot trouvé"/>
+                                </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
                     </Grid>

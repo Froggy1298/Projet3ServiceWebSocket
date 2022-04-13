@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0-windows7.0": {
       "BoDi/1.5.0": {
         "type": "package",
         "compile": {
@@ -294,14 +294,14 @@
           "System.Text.Encoding.CodePages": "4.4.0"
         },
         "compile": {
-          "lib/netstandard2.1/MySql.Data.dll": {},
-          "lib/netstandard2.1/Ubiety.Dns.Core.dll": {},
-          "lib/netstandard2.1/ZstdNet.dll": {}
+          "lib/net5.0/MySql.Data.dll": {},
+          "lib/net5.0/Ubiety.Dns.Core.dll": {},
+          "lib/net5.0/ZstdNet.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/MySql.Data.dll": {},
-          "lib/netstandard2.1/Ubiety.Dns.Core.dll": {},
-          "lib/netstandard2.1/ZstdNet.dll": {}
+          "lib/net5.0/MySql.Data.dll": {},
+          "lib/net5.0/Ubiety.Dns.Core.dll": {},
+          "lib/net5.0/ZstdNet.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -506,16 +506,16 @@
           "System.Threading.Tasks.Dataflow": "4.9.0"
         },
         "compile": {
-          "lib/netstandard2.0/Gherkin.dll": {},
-          "lib/netstandard2.0/TechTalk.SpecFlow.Generator.dll": {},
-          "lib/netstandard2.0/TechTalk.SpecFlow.Parser.dll": {},
-          "lib/netstandard2.0/TechTalk.SpecFlow.Utils.dll": {}
+          "lib/net5.0/Gherkin.dll": {},
+          "lib/net5.0/TechTalk.SpecFlow.Generator.dll": {},
+          "lib/net5.0/TechTalk.SpecFlow.Parser.dll": {},
+          "lib/net5.0/TechTalk.SpecFlow.Utils.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Gherkin.dll": {},
-          "lib/netstandard2.0/TechTalk.SpecFlow.Generator.dll": {},
-          "lib/netstandard2.0/TechTalk.SpecFlow.Parser.dll": {},
-          "lib/netstandard2.0/TechTalk.SpecFlow.Utils.dll": {}
+          "lib/net5.0/Gherkin.dll": {},
+          "lib/net5.0/TechTalk.SpecFlow.Generator.dll": {},
+          "lib/net5.0/TechTalk.SpecFlow.Parser.dll": {},
+          "lib/net5.0/TechTalk.SpecFlow.Utils.dll": {}
         }
       },
       "SpecFlow.Internal.Json/1.0.8": {
@@ -5285,7 +5285,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net5.0-windows7.0": [
       "Microsoft.Extensions.Configuration >= 6.0.1",
       "Microsoft.Extensions.Configuration.Binder >= 6.0.0",
       "Microsoft.Extensions.Configuration.Json >= 6.0.0",
@@ -5296,38 +5296,36 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\2031887\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\suiss\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\2031887\\Desktop\\ServiceWeb\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\suiss\\Desktop\\ServiceWeb\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\2031887\\Desktop\\ServiceWeb\\Server\\Server.csproj",
-      "packagesPath": "C:\\Users\\2031887\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\2031887\\Desktop\\ServiceWeb\\Server\\obj\\",
+      "projectPath": "C:\\Users\\suiss\\Desktop\\ServiceWeb\\Server\\Server.csproj",
+      "packagesPath": "C:\\Users\\suiss\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\suiss\\Desktop\\ServiceWeb\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\2031887\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\suiss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0-windows7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
           "projectReferences": {}
         }
       },
@@ -5338,8 +5336,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0-windows7.0": {
+        "targetAlias": "net5.0-windows",
         "dependencies": {
           "Microsoft.Extensions.Configuration": {
             "target": "Package",
@@ -5380,6 +5378,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.16, 5.0.16]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -5388,7 +5404,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.212\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

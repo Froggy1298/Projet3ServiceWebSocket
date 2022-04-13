@@ -2,6 +2,7 @@
 using Server.Modele;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Net.Sockets;
@@ -140,9 +141,9 @@ namespace Server.VueModele
             get { return motRechercher; }
             set { motRechercher = value; NotifyPropertyChanged(); }
         }
-        private List<string> motTrouver;
+        private ObservableCollection<string> motTrouver;
 
-        public List<string> PropMotTrouve
+        public ObservableCollection<string> PropMotTrouve
         {
             get { return motTrouver; }
             set { motTrouver = value; NotifyPropertyChanged(); }
@@ -187,8 +188,7 @@ namespace Server.VueModele
         public ICommand PropRechercher { get; set; }
         private void Rechercher(object param)
         {
-            
-            PropMotTrouve = new List<string>();
+            PropMotTrouve = new ObservableCollection<string>();
             if (PropMotRechercher.Contains("*"))
             {
                 string tempRecherche = PropMotRechercher.Remove(0, 1);
